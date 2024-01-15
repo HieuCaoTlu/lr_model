@@ -5,7 +5,6 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 import pickle
 
-# Tạo widget FloatText để nhập số
 loaded_model = pickle.load(open('model.sav', 'rb'))
 
 lb1 = widgets.HTML(value='Nhập số tiền muốn vay:')
@@ -16,6 +15,21 @@ lb5 = widgets.HTML(value='Số lượng hồ sơ:   ')
 lb6 = widgets.HTML(value='Chọn loại kì hạn:   ')
 lb7 = widgets.HTML(value='Chọn bên vay:   ')
 
+lb1.layout.width = '20%'
+lb2.layout.width = '20%'
+lb3.layout.width = '20%'
+lb4.layout.width = '20%'
+lb5.layout.width = '20%'
+lb6.layout.width = '20%'
+lb7.layout.width = '20%'
+loan_amnt.layout.width = '12%'
+int_rate.layout.width = '12%'
+dti.layout.width = '12%'
+total_pymnt.layout.width = '12%'
+pub_rec.layout.width = '12%'
+term.layout.width = '12%'
+application_type.layout.width = '12%'
+
 loan_amnt = widgets.FloatText()
 int_rate = widgets.FloatText()
 dti = widgets.FloatText()
@@ -25,7 +39,6 @@ term = widgets.Dropdown(options=['36 tháng', '60 tháng'], disable = False)
 application_type = widgets.Dropdown(options=['Cá nhân', 'Tổ chức'], disable = False)
 predict_button = widgets.Button(description='Xác nhận')
 
-# Hàm xử lý sự kiện khi người dùng nhấn nút Xác nhận
 def predict(b):
     a= loan_amnt.value
     b = int_rate.value
@@ -54,12 +67,9 @@ def predict(b):
     result = loaded_model.predict(newCus)
     if result: print("Dự đoán: Khách hàng này sẽ trả được nợ")
     else: print("Dự đoán: Khách hàng này sẽ không trả được nợ")
-    # print(f"Kết quả: {result}")
 
-# Gắn hàm xử lý sự kiện vào nút Xác nhận
 predict_button.on_click(predict)
 
-# Hiển thị widget
 display(widgets.HBox([lb1, loan_amnt]))
 display(widgets.HBox([lb2, int_rate]))
 display(widgets.HBox([lb3, dti]))
