@@ -2,8 +2,10 @@ from re import A
 import ipywidgets as widgets
 from IPython.display import display
 import pandas as pd
+from sklearn.linear_model import LogisticRegression
 
 # Tạo widget FloatText để nhập số
+loaded_model = pickle.load(open('model.sav', 'rb'))
 
 lb1 = widgets.HTML(value='Nhập số tiền muốn vay:')
 lb2 = widgets.HTML(value='Nhập lãi suất:')
