@@ -3,6 +3,7 @@ import ipywidgets as widgets
 from IPython.display import display
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
+import pickle
 
 # Tạo widget FloatText để nhập số
 loaded_model = pickle.load(open('model.sav', 'rb'))
