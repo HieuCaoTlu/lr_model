@@ -14,6 +14,7 @@ lb4 = widgets.HTML(value='Nhập số tiền vay đã trả:')
 lb5 = widgets.HTML(value='Nhập số hồ sơ công khai:')
 lb6 = widgets.HTML(value='Chọn loại kì hạn:')
 lb7 = widgets.HTML(value='Chọn loại bên vay:')
+lb8 = widgets.HTML(value='Đang đợi nhập')
 
 lb1.layout.width = '20%'
 lb2.layout.width = '20%'
@@ -22,6 +23,7 @@ lb4.layout.width = '20%'
 lb5.layout.width = '20%'
 lb6.layout.width = '20%'
 lb7.layout.width = '20%'
+lb8.layout.max_width = '100%'
 
 loan_amnt = widgets.FloatText()
 int_rate = widgets.FloatText()
@@ -66,8 +68,10 @@ def predict(b):
                 'application_type_Individual':h,
                 'application_type_Joint App':i,}], columns = ['loan_amnt','int_rate','dti','pub_rec','total_pymnt','term_ 36 months','term_ 60 months','application_type_Individual','application_type_Joint App'])
     result = loaded_model.predict(newCus)
-    if result: print("Dự đoán: Khách hàng này sẽ trả được nợ")
-    else: print("Dự đoán: Khách hàng này sẽ không trả được nợ")
+    text = ""
+    if result: text = "Dự đoán: Khách hàng này sẽ trả được nợ"
+    else: text = "Dự đoán: Khách hàng này sẽ không trả được nợ"
+    lb8.value = text
 
 predict_button.on_click(predict)
 
@@ -79,3 +83,4 @@ display(widgets.HBox([lb5, pub_rec]))
 display(widgets.HBox([lb6, term]))
 display(widgets.HBox([lb7, application_type]))
 display(widgets.HBox([predict_button]))
+display(widgets.HBox([lb8]))
