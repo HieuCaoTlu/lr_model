@@ -8,12 +8,12 @@ import pickle
 loaded_model = pickle.load(open('model.sav', 'rb'))
 
 lb1 = widgets.HTML(value='Nhập số tiền muốn vay:')
-lb2 = widgets.HTML(value='Nhập lãi suất:')
+lb2 = widgets.HTML(value='Nhập lãi suất (%):')
 lb3 = widgets.HTML(value='Nhập tỉ lệ nợ trên thu nhập:')
-lb4 = widgets.HTML(value='Nhập số tiền vay đã trả: ')
-lb5 = widgets.HTML(value='Số lượng hồ sơ:   ')
-lb6 = widgets.HTML(value='Chọn loại kì hạn:   ')
-lb7 = widgets.HTML(value='Chọn bên vay:   ')
+lb4 = widgets.HTML(value='Nhập số tiền vay đã trả:')
+lb5 = widgets.HTML(value='Nhập số hồ sơ công khai:')
+lb6 = widgets.HTML(value='Chọn loại kì hạn:')
+lb7 = widgets.HTML(value='Chọn loại bên vay:')
 
 lb1.layout.width = '20%'
 lb2.layout.width = '20%'
