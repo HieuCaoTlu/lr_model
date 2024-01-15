@@ -22,13 +22,6 @@ lb4.layout.width = '20%'
 lb5.layout.width = '20%'
 lb6.layout.width = '20%'
 lb7.layout.width = '20%'
-loan_amnt.layout.width = '12%'
-int_rate.layout.width = '12%'
-dti.layout.width = '12%'
-total_pymnt.layout.width = '12%'
-pub_rec.layout.width = '12%'
-term.layout.width = '12%'
-application_type.layout.width = '12%'
 
 loan_amnt = widgets.FloatText()
 int_rate = widgets.FloatText()
@@ -38,6 +31,14 @@ pub_rec = widgets.IntText()
 term = widgets.Dropdown(options=['36 tháng', '60 tháng'], disable = False)
 application_type = widgets.Dropdown(options=['Cá nhân', 'Tổ chức'], disable = False)
 predict_button = widgets.Button(description='Xác nhận')
+
+loan_amnt.layout.width = '12%'
+int_rate.layout.width = '12%'
+dti.layout.width = '12%'
+total_pymnt.layout.width = '12%'
+pub_rec.layout.width = '12%'
+term.layout.width = '12%'
+application_type.layout.width = '12%'
 
 def predict(b):
     a= loan_amnt.value
