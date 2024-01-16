@@ -10,7 +10,7 @@ loaded_model = pickle.load(open('model.sav', 'rb'))
 lb1 = widgets.HTML(value='Nhập số tiền muốn vay:')
 lb2 = widgets.HTML(value='Nhập lãi suất (%):')
 lb3 = widgets.HTML(value='Nhập tỉ lệ nợ trên thu nhập:')
-lb4 = widgets.HTML(value='Nhập điểm tín dụng FICO:')
+lb4 = widgets.HTML(value='Nhập điểm tín dụng FICO (:')
 lb5 = widgets.HTML(value='Nhập số hồ sơ công khai:')
 lb6 = widgets.HTML(value='Chọn loại kì hạn:')
 lb7 = widgets.HTML(value='Chọn loại bên vay:')
@@ -34,13 +34,13 @@ term = widgets.Dropdown(options=['36 tháng', '60 tháng'], disable = False)
 application_type = widgets.Dropdown(options=['Cá nhân', 'Tổ chức'], disable = False)
 predict_button = widgets.Button(description='Xác nhận')
 
-loan_amnt.layout.width = '20%'
-int_rate.layout.width = '20%'
-dti.layout.width = '20%'
-fico.layout.width = '20%'
-pub_rec.layout.width = '20%'
-term.layout.width = '20%'
-application_type.layout.width = '20%'
+loan_amnt.layout.width = '30%'
+int_rate.layout.width = '30%'
+dti.layout.width = '30%'
+fico.layout.width = '30%'
+pub_rec.layout.width = '30%'
+term.layout.width = '30%'
+application_type.layout.width = '30%'
 
 def predict(b):
     a= loan_amnt.value
