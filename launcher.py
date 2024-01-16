@@ -16,13 +16,13 @@ lb6 = widgets.HTML(value='Chọn loại kì hạn:')
 lb7 = widgets.HTML(value='Chọn loại bên vay:')
 lb8 = widgets.HTML(value='Đang đợi nhập')
 
-lb1.layout.width = '20%'
-lb2.layout.width = '20%'
-lb3.layout.width = '20%'
-lb4.layout.width = '20%'
-lb5.layout.width = '20%'
-lb6.layout.width = '20%'
-lb7.layout.width = '20%'
+# lb1.layout.width = '20%'
+# lb2.layout.width = '20%'
+# lb3.layout.width = '20%'
+# lb4.layout.width = '20%'
+# lb5.layout.width = '20%'
+# lb6.layout.width = '20%'
+# lb7.layout.width = '20%'
 lb8.layout.max_width = '100%'
 
 loan_amnt = widgets.FloatText()
@@ -34,13 +34,13 @@ term = widgets.Dropdown(options=['36 tháng', '60 tháng'], disable = False)
 application_type = widgets.Dropdown(options=['Cá nhân', 'Tổ chức'], disable = False)
 predict_button = widgets.Button(description='Xác nhận')
 
-loan_amnt.layout.width = '12%'
-int_rate.layout.width = '12%'
-dti.layout.width = '12%'
-fico.layout.width = '12%'
-pub_rec.layout.width = '12%'
-term.layout.width = '12%'
-application_type.layout.width = '12%'
+loan_amnt.layout.width = '20%'
+int_rate.layout.width = '20%'
+dti.layout.width = '20%'
+fico.layout.width = '20%'
+pub_rec.layout.width = '20%'
+term.layout.width = '20%'
+application_type.layout.width = '20%'
 
 def predict(b):
     a= loan_amnt.value
