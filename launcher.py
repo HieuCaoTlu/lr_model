@@ -2,7 +2,6 @@ from re import A
 import ipywidgets as widgets
 from IPython.display import display
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 import pickle
 
@@ -68,8 +67,6 @@ def predict(b):
                 'term_ 60 months':g,
                 'application_type_Individual':h,
                 'application_type_Joint App':i,}], columns = ['loan_amnt','int_rate','dti','pub_rec','FICOscore','term_ 36 months','term_ 60 months','application_type_Individual','application_type_Joint App'])
-    scaler = StandardScaler()
-    newCus = scaler.fit_transform(newCus)
     result = loaded_model.predict(newCus)
     text = ""
     if result: text = "Dự đoán: Khách hàng này sẽ trả được nợ"
