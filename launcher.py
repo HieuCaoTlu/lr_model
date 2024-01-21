@@ -2,6 +2,7 @@ from re import A
 import ipywidgets as widgets
 from IPython.display import display
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 import pickle
 
@@ -9,20 +10,20 @@ loaded_model = pickle.load(open('model.sav', 'rb'))
 
 lb1 = widgets.HTML(value='Nhập số tiền muốn vay:')
 lb2 = widgets.HTML(value='Nhập lãi suất (%):')
-lb3 = widgets.HTML(value='Nhập tỉ lệ nợ trên thu nhập:')
+lb3 = widgets.HTML(value='Nhập tỉ lệ nợ trên thu nhập (%):')
 lb4 = widgets.HTML(value='Nhập điểm tín dụng FICO:')
 lb5 = widgets.HTML(value='Nhập số hồ sơ công khai:')
 lb6 = widgets.HTML(value='Chọn loại kì hạn:')
 lb7 = widgets.HTML(value='Chọn loại bên vay:')
 lb8 = widgets.HTML(value='Đang đợi nhập')
 
-# lb1.layout.width = '20%'
-# lb2.layout.width = '20%'
-# lb3.layout.width = '20%'
-# lb4.layout.width = '20%'
-# lb5.layout.width = '20%'
-# lb6.layout.width = '20%'
-# lb7.layout.width = '20%'
+lb1.layout.width = '250px'
+lb2.layout.width = '250px'
+lb3.layout.width = '250px'
+lb4.layout.width = '250px'
+lb5.layout.width = '250px'
+lb6.layout.width = '250px'
+lb7.layout.width = '250px'
 lb8.layout.max_width = '100%'
 
 loan_amnt = widgets.FloatText()
@@ -34,13 +35,13 @@ term = widgets.Dropdown(options=['36 tháng', '60 tháng'], disable = False)
 application_type = widgets.Dropdown(options=['Cá nhân', 'Tổ chức'], disable = False)
 predict_button = widgets.Button(description='Xác nhận')
 
-loan_amnt.layout.width = '30%'
-int_rate.layout.width = '30%'
-dti.layout.width = '30%'
-fico.layout.width = '30%'
-pub_rec.layout.width = '30%'
-term.layout.width = '30%'
-application_type.layout.width = '30%'
+loan_amnt.layout.width = '200px'
+int_rate.layout.width = '200px'
+dti.layout.width = '200px'
+fico.layout.width = '200px'
+pub_rec.layout.width = '200px'
+term.layout.width = '200px'
+application_type.layout.width = '200px'
 
 def predict(b):
     a= loan_amnt.value
@@ -67,6 +68,8 @@ def predict(b):
                 'term_ 60 months':g,
                 'application_type_Individual':h,
                 'application_type_Joint App':i,}], columns = ['loan_amnt','int_rate','dti','pub_rec','FICOscore','term_ 36 months','term_ 60 months','application_type_Individual','application_type_Joint App'])
+    scaler = StandardScaler()
+    newCus = scaler.fit_transform(newCus)
     result = loaded_model.predict(newCus)
     text = ""
     if result: text = "Dự đoán: Khách hàng này sẽ trả được nợ"
